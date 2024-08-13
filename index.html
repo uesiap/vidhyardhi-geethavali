@@ -144,8 +144,6 @@
 
         .search-container input:focus {
             outline: none;
-            border-bottom-color: #0c1319;
-            border-top-color: #0c1319;
         }
 
         .tab-container {
@@ -474,6 +472,15 @@
             touchEndX = e.changedTouches[0].screenX;
             handleGesture();
         });
+
+        //Search Box Outline when Input field is Focused
+        document.querySelector('.search-container input').addEventListener('focus', function() {
+    document.querySelector('.search-container').style.border = '2px solid #197afe';
+});
+
+document.querySelector('.search-container input').addEventListener('blur', function() {
+    document.querySelector('.search-container').style.border = '1px solid #fff';
+});
     </script>
   <footer style="position: fixed; bottom: 20px; width: 100%; background-color: #0c1319; color: #fff; text-align: center; padding: 10px 0; font-family: 'Google Sans', sans-serif;"><p style="margin: 0; font-size: 13px;">©2024 Designed with ❤️ by <a href="https://rahul.serv00.net/profile" style="text-decoration: underline; color: #197afe;"><strong>Rahul</strong></a></p></footer>
   <script>
