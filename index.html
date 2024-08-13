@@ -288,15 +288,16 @@
     <script>
         // Define separate queues for tracks and songs
         const tracksQueue = [
-            { name: '1. Yerugudhuva Neevu', url: 'https://d3v5mrcg9cc5a5.cloudfront.net/i6lzc4%2Ffile%2F290a57531f278bb52d78531f9117c160_e1780f48b50903d33fbc4aa4550ce984.mp3?response-content-disposition=inline%3Bfilename%3D%22290a57531f278bb52d78531f9117c160_e1780f48b50903d33fbc4aa4550ce984.mp3%22%3B&response-content-type=audio%2Fmpeg&Expires=1723511320&Signature=dkBzTOqJrzLRgrhBLfWNkXFmvr7j9nDrMM~lx3oFqbs6Fn1TUDUKZ70HADI7KjS9Ij-GMbarws6mlsgRF8AIKpqpdlgtB2RHzUO6stA8Mm1AOdAD-mf-3Nm~D~k-dItMJKLpB2fju-qYkewTsH5ULHFX1xOZcPLLG10b~wDQ2SrEloypG--HKhF-EwQuKSSehieGXMnbJsgS88HSrgJ3xfBaDVN~qhAIocoznzrtbDDFaLcrDjJl5aXXCsWAFIXXOMVaJGzUvDxkk0dlVED7wKSkMCzkPfC4BX5zWrJQYG8IZrydqbKF-zvMwOmOnDuIcoTbxksE8KRokSFIkWzmTQ__&Key-Pair-Id=APKAJT5WQLLEOADKLHBQ' },
+            { name: '1. Yerugudhuva Neevu', url: 'https://you42-mvp-private.s3.amazonaws.com/56/78/c6/0b/1a/b2/81/30/5d/a8/0f/e6/a3/58/41/2a/8jyQgvaBDW4JCcqa.mp3?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARGWWBLBLGMPG5ENB%2F20240813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240813T023746Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=24ad24e8c42d34c50767e898da787ffb282564e68b246704b0e312b189e8d88d' },
             // Add more tracks here
         ];
 
         const songsQueue = [
             { name: '1. Ascharyamaina Prema', url: 'https://archive.org/download/uesiap/15vgSongs1-09Ascharyamaina.mp3' },
             { name: '2. Nee Jeevitham', url: 'https://archive.org/download/uesiap/15vgSongs4-04NeeJeevitham.mp3' },
-            { name: '3. Santhoshame Santhoshame', url: 'https://d1mehngj2gp76v.cloudfront.net/k94f64%2Ffile%2F095de85b03e23e7f0b3f19fb64c05cb8_2ed6986f3fc22a19dacca511c8af7be1.mp3?response-content-disposition=inline%3Bfilename%3D%22095de85b03e23e7f0b3f19fb64c05cb8_2ed6986f3fc22a19dacca511c8af7be1.mp3%22%3B&response-content-type=audio%2Fmpeg&Expires=1723503372&Signature=bobiXDFvAoLTOjEGRaWZnW~FHB2Z8ty7bUSzZ0-uKaaSoQk~ZwD6VAZRVkqF2OZ18Hd01OzaITtwBjPXmmyoRz09n-oLF2tTb869q6TNx4x6Cqa-IHVwpnek0XRwH5zhUFjkCRcWYmCPfFGq7biA93ork9FBaK7xeG7JTSN7U6~KPasCSP34yuOuW3jDFCMxkwaHect-BZ8nLv4VTNXEcAYCWL6WkZ7PqPdeXNOsblMYWZlmMjdJwAMnhAIe5vji7qNuXOUBFb3OpTAKPD~g4Mmy8e9MOj0BlhAb2wW7h8oBjY0PAEDIHspfI6Dm~-iKsPWA7yQluOXSasu9-i-cRQ__&Key-Pair-Id=APKAJT5WQLLEOADKLHBQ' },
+            { name: '3. Santhoshame Santhoshame', url: 'https://you42-mvp-private.s3.amazonaws.com/e6/50/64/47/11/f2/30/0d/d9/7d/f8/78/61/6c/af/02/6fy7XM3ngrm57vsc.mp3?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARGWWBLBLGMPG5ENB%2F20240813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240813T022722Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=3ee5b969768f2cffdb2aab7767f5811e51c383f5682fbde9b9c2bbe9d1e9ad94' },
             { name: '4. Santhoshame neeku kavalaa', url: 'https://archive.org/download/uesiap/11neeve-018Santoshame.mp3' },
+            { name: '4. Swetcha Needhe', url: 'https://you42-mvp-private.s3.amazonaws.com/98/b3/92/4d/7e/12/98/73/61/28/2d/b6/56/f1/8b/c4/80mesui7zI6X4pD5.mp3?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARGWWBLBLGMPG5ENB%2F20240813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240813T022607Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=e4703a4e21a4672d67ecb6177caf49dbdf05dec3090837a69979a5b18bba3b35' },
             // Add more songs here
         ];
 
