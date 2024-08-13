@@ -121,52 +121,86 @@
             align-items: center;
         }
 
-        .search-container {
-            text-align: left;
-            background-color: #0c1319;
-            border: 1px solid #fff;
-            display: flex;
-            border-radius: 20px;
-            margin-bottom: 10px;
-            width: 80%;
-            max-width: 500px;
-        }
+        /* Search container styles */
+.search-container {
+    text-align: left;
+    background-color: #0c1319;
+    border: 1px solid #fff;
+    display: flex;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 500px;
+    position: relative; /* For positioning ripple effect */
+    overflow: hidden; /* Ensure ripple effect stays within the container */
+    cursor: pointer; /* Pointer cursor to indicate it's interactive */
+}
 
-        .search-container input {
-            padding: 10px;
-            width: 80%;
-            max-width: 500px;
-            color: #fff;
-            border-radius: 20px;
-            background-color: #0c1319;
-            border: 1px solid #0c1319;
-            border-radius: 5px;
-        }
+/* Input field styles */
+.search-container input {
+    padding: 10px;
+    width: 73%;
+    max-width: 500px;
+    color: #fff;
+    background-color: #0c1319;
+    border: 1px solid #0c1319;
+    border-radius: 5px;
+}
+
+/* Ripple effect styling */
+.search-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Light ripple color */
+    border-radius: 50%;
+    transform: scale(0);
+    pointer-events: none;
+    transition: transform 0.4s, opacity 0.4s;
+    opacity: 0;
+    z-index: 1; /* Ensure ripple is above other content */
+    transform-origin: right; /* Ensures ripple scales from center */
+}
+
+/* Activate ripple effect on mouse events */
+.search-container:active::before {
+    transform: scale(4); /* Adjust scale as needed */
+    opacity: 1;
+}
+
 
         .search-container input:focus {
             outline: none;
         }
+        
 
         .tab-container {
             display: flex;
             justify-content: center;
-            margin-top: 10px; /* Adjusted for fixed header */
+            margin-top: 0px; /* Adjusted for fixed header */
         }
 
         .tab {
             background-color: #0c1319;
             border: none;
-            padding: 10px 65px;
+            padding: 15px 65px;
             cursor: pointer;
             color: #fff;
-            font-size: 16px;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
             margin: 0 5px;
+            height: 40px;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .tab.active {
             color: #197afe;
-            border-bottom: 2px solid #197EFA;
+            //border-bottom: 2px solid #197EFA;
+            
         }
 
         .section {
@@ -244,6 +278,8 @@
 
         button.play {
             background-color: #007bff;
+            width: 40px;
+            height: 40px;
             color: #fff;
         }
 
@@ -265,28 +301,86 @@
         input[type="range"] {
             width: 100%;
         }
+        
+        #search-icon .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: #666;
+        transform: scale(0);
+        pointer-events: none;
+    }
+    
+    @keyframes ripple-animation {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+    .tab {
+    position: relative;
+    overflow: hidden; 
+}
+
+.tab::after {
+    content: ''; 
+    position: absolute; 
+    border-radius: 50%; 
+    background: rgba(255, 255, 255, 0.3); 
+    width: 100%; /* Adjust the size */
+    height: 100%; /* Adjust the size */
+    transform: scale(0); 
+    opacity: 0; 
+    pointer-events: none; 
+    transition: transform 0.5s, opacity 0.5s; 
+    z-index: 0;
+}
+
+.tab:active::after {
+    transform: scale(4); 
+    opacity: 1; 
+    transition: 0s;
+}
+
+.tab.active::after {
+    /* Optional: Style for the active tab if needed */
+}
+
+button i {
+    font-size: 20px; /* Adjust as needed */
+    vertical-align: middle; /* vertically */
+    align-items: center;
+    justify-content: center;
+    }
+    
+
     </style>
 </head>
 <body>
     <div class="header">
         <div style="display: flex; flex-direction: row; margin-left: -30px; margin-bottom: 20px;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcSxSNUXpJ8n2YkTuBEeO84gb1dH6NRhvQNg&s" width="50px" height="50px" style="margin-top: 15px; margin-left: -20px; border-radius: 50%"> &emsp;<h2 style="color: white; font-weight: 500;">UESI AP Audio Songs</h2></div>
-         <div class="search-container" style="margin-left: -20px">
-            <i class="fas fa-search" style="margin-top: 10px; color: #ccc; margin-left: 15px"></i>
-            <input type="text" id="searchInput" placeholder="Search for a song...">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcSxSNUXpJ8n2YkTuBEeO84gb1dH6NRhvQNg&s" width="50px" height="50px" style="margin-top: 12px; margin-left: -20px; border-radius: 50%"> &emsp;<h2 style="color: white; font-weight: 500;">UESI AP Audio Songs</h2>&ensp;&ensp;<div style="position: relative; border-radius: 50px; border: 1px solid #fff; height: 50px; width: 50px; margin-top: 14px; margin-right: -20px; overflow: hidden; cursor: pointer;" id="search-icon">
+    <i class="fas fa-search" style="margin-top: 18px; color: #197afe; margin-left: 17px;"></i>
+    <span class="ripple"></span>
+</div></div>
+        
+     <div class="search-container" id="search-box" style="display: none">
+    <i class="fas fa-search" style="margin-top: 10px; color: #ccc; margin-left: 15px"></i>
+    <input type="text" id="searchInput" placeholder="Search for a song...">
+</div>
+
+        
+        
+        <div class="tab-container" style="margin-left: -25px; border-bottom: 1px solid #fff; border-top: 1px solid #fff">
+            <button class="tab active" onclick="showSection('songs-section')" style="border-right: 1px solid #fff; margin-right: -0.5px; margin-bottom: 0px; display: inline-flex;">Songs</button>            
+            <button class="tab" onclick="showSection('tracks-section')" style="border-left: 1px solid #fff; margin-left: -0.5px;margin-bottom: 0px; display: inline-flex;">Tracks</button>
         </div>
-        <div class="tab-container" style="margin-left: -25px">
-            <button class="tab active" onclick="showSection('songs-section')">Songs</button>
-            <button class="tab" onclick="showSection('tracks-section')">Tracks</button>
-        </div>
-    </div><br>
-    <div class="container" style="margin-top: 70px">
-        <div class="section active" id="songs-section">
-            <h1>Songs</h1>            
+    </div>
+    <br>
+    <div class="container" style="margin-top: 70px;" id="sections">
+        <div class="section active" id="songs-section">         
             <ul id="songsList"></ul>
         </div>
         <div class="section" id="tracks-section">
-            <h1>Tracks</h1>
             <ul id="tracksList"></ul>
         </div>
     </div>
@@ -337,7 +431,7 @@
                             ${song.name}
                         </div>
                         <div class="controls">
-                            <button class="play" onclick="togglePlayPause(${index}, this, 'songs')">Play</button>
+                            <button class="play" onclick="togglePlayPause(${index}, this, 'songs')"><i class="fa fa-play"></i></button>
                         </div>
                     </div>
                     <div class="slider-container">
@@ -357,7 +451,7 @@
                             ${song.name}
                         </div>
                         <div class="controls">
-                            <button class="play" onclick="togglePlayPause(${index}, this, 'tracks')">Play</button>
+                            <button class="play" onclick="togglePlayPause(${index}, this, 'tracks')"><i class="fa fa-play"></i></button>
                         </div>
                     </div>
                     <div class="slider-container">
@@ -386,34 +480,36 @@
             const isCurrentlyPlaying = currentPlayingIndex === index && currentQueue === type;
 
             if (isCurrentlyPlaying) {
-                if (audio.paused) {
-                    audio.play();
-                    button.textContent = 'Pause';
-                    button.classList.remove('play');
-                    button.classList.add('pause');
-                } else {
-                    audio.pause();
-                    button.textContent = 'Play';
-                    button.classList.remove('pause');
-                    button.classList.add('play');
-                                    }
-            } else {
-                if (currentPlayingIndex !== null && currentQueue) {
-                    const prevButton = document.querySelector(`ul#${currentQueue}List li:nth-child(${currentPlayingIndex + 1}) .controls button`);
-                    if (prevButton) {
-                        prevButton.textContent = 'Play';
-                        prevButton.classList.remove('pause');
-                        prevButton.classList.add('play');
-                    }
-                }
+    if (audio.paused) {
+        audio.play();
+        button.innerHTML = '<i class="fa fa-pause"></i>'; // Font Awesome pause icon
+        button.classList.remove('play');
+        button.classList.add('pause');
+    } else {
+        audio.pause();
+        button.innerHTML = '<i class="fa fa-play"></i>'; // Font Awesome play icon
+        button.classList.remove('pause');
+        button.classList.add('play');
+    }
+} else {
+    if (currentPlayingIndex !== null && currentQueue) {
+        const prevButton = document.querySelector(`ul#${currentQueue}List li:nth-child(${currentPlayingIndex + 1}) .controls button`);
+        if (prevButton) {
+            prevButton.innerHTML = '<i class="fa fa-play"></i>'; // Font Awesome play icon
+            prevButton.classList.remove('pause');
+            prevButton.classList.add('play');
+        }
+    }
 
-                currentQueue = type;
-                currentPlayingIndex = index;
-                audio.src = queue[index].url;
-                audio.play();
-                button.textContent = 'Pause';
-                button.classList.remove('play');
-                button.classList.add('pause');
+    currentQueue = type;
+    currentPlayingIndex = index;
+    audio.src = queue[index].url;
+    audio.play();
+    button.innerHTML = '<i class="fa fa-pause"></i>'; // Font Awesome pause icon
+    button.classList.remove('play');
+    button.classList.add('pause');
+
+
 
                 const prevSlider = document.querySelector('.slider-container.active');
                 if (prevSlider) prevSlider.classList.remove('active');
@@ -448,8 +544,10 @@
             }
         });
 
-        document.getElementById('searchInput').addEventListener('input', function (e) {
-            const filter = e.target.value.toLowerCase();
+
+// Search Box JavaScript 
+document.getElementById('searchInput').addEventListener('input', function (e) {
+           const filter = e.target.value.toLowerCase();
             const lists = [songsList, tracksList];
 
             lists.forEach(list => {
@@ -458,7 +556,8 @@
                     item.style.display = text.toLowerCase().indexOf(filter) > -1 ? "" : "none";
                 });
             });
-        });
+        }); 
+        
 
         // Initialize the song list display
         displaySongs();
@@ -486,14 +585,68 @@ document.addEventListener('touchend', e => {
     handleGesture();
 });
 
+    // Variables for tracking the search box state
+    let isSearchBoxOpen = false;
+
+    // Event listener for the search icon
+    document.getElementById('search-icon').addEventListener('click', function () {
+        const searchBox = document.getElementById('search-box');
+        const sectionsContainer = document.getElementById('sections');
+
+        if (!isSearchBoxOpen) {
+            // Open the search box
+            searchBox.style.display = 'flex';
+            sectionsContainer.style.marginTop = '120px';
+        } else {
+            // Close the search box
+            searchBox.style.display = 'none';
+            sectionsContainer.style.marginTop = '70px';
+        }
+
+        // Toggle the state
+        isSearchBoxOpen = !isSearchBoxOpen;
+    });
+
+    // Adjust the search box outline when input field is focused
+    document.querySelector('.search-container input').addEventListener('focus', function() {
+        document.querySelector('.search-container').style.border = '1px solid #197afe';
+    });
+
+    document.querySelector('.search-container input').addEventListener('blur', function() {
+        document.querySelector('.search-container').style.border = '1px solid #fff';
+    });
+
         //Search Box Outline when Input field is Focused
+        
         document.querySelector('.search-container input').addEventListener('focus', function() {
-    document.querySelector('.search-container').style.border = '2px solid #197afe';
+    document.querySelector('.search-container').style.border = '1px solid #197afe';
+    document.querySelector('.search-container').style.boxShadow = '0 0 4px #197afe';
 });
 
 document.querySelector('.search-container input').addEventListener('blur', function() {
     document.querySelector('.search-container').style.border = '1px solid #fff';
 });
+
+document.getElementById('search-icon').addEventListener('click', function(e) {
+    var ripple = this.querySelector('.ripple');
+    
+    // Remove existing ripple effect
+    ripple.style.animation = 'none';
+    
+    // Calculate the position and size of the ripple
+    var rect = this.getBoundingClientRect();
+    var size = Math.max(rect.width, rect.height);
+    var x = e.clientX - rect.left - size / 2;
+    var y = e.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    
+    // Trigger the animation
+    ripple.style.animation = 'ripple-animation 0.6s linear';
+});
+
     </script>
   <footer style="position: fixed; bottom: 0px; width: 100%; background-color: #0c1319; color: #fff; text-align: center; padding: 10px 0; font-family: 'Google Sans', sans-serif;"><p style="margin: 0; font-size: 13px;">©2024 Designed with ❤️ by <a href="https://rahul.serv00.net/profile" style="text-decoration: underline; color: #197afe;"><strong>Rahul</strong></a></p></footer>
   <script>
