@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,7 +181,6 @@
         .tab-container {
             display: flex;
             justify-content: center;
-            margin-top: 0px; /* Adjusted for fixed header */
         }
 
         .tab {
@@ -370,9 +370,9 @@ button i {
 
         
         
-        <div class="tab-container" style="margin-left: -25px; border-bottom: 1px solid #fff; border-top: 1px solid #fff">
-            <button class="tab active" onclick="showSection('songs-section')" style="border-right: 1px solid #fff; margin-right: -0.5px; margin-bottom: 0px; display: inline-flex;">Songs</button>            
-            <button class="tab" onclick="showSection('tracks-section')" style="border-left: 1px solid #fff; margin-left: -0.5px;margin-bottom: 0px; display: inline-flex;">Tracks</button>
+        <div class="tab-container" style="margin-left: -25px; border: 1px solid #fff;border-radius: 20px">
+            <button class="tab active" onclick="showSection('songs-section')" style="border-right: 1px solid #fff; margin-right: -0.5px; margin-bottom: 0px; display: inline-flex; border-radius: 50px 0 0 50px;">Songs</button>            
+            <button class="tab" onclick="showSection('tracks-section')" style="border-left: 1px solid #fff; margin-left: -0.5px;margin-bottom: 0px; display: inline-flex; border-radius: 0 50px 50px 0;">Tracks</button>
         </div>
     </div>
     <br>
@@ -545,6 +545,8 @@ button i {
         });
 
 
+
+
 // Search Box JavaScript 
 document.getElementById('searchInput').addEventListener('input', function (e) {
            const filter = e.target.value.toLowerCase();
@@ -558,7 +560,10 @@ document.getElementById('searchInput').addEventListener('input', function (e) {
             });
         }); 
         
-
+        
+        
+        
+ 
         // Initialize the song list display
         displaySongs();
 
@@ -584,6 +589,13 @@ document.addEventListener('touchend', e => {
     touchEndX = e.changedTouches[0].screenX;
     handleGesture();
 });
+
+
+
+
+
+
+
 
     // Variables for tracking the search box state
     let isSearchBoxOpen = false;
@@ -616,8 +628,18 @@ document.addEventListener('touchend', e => {
         document.querySelector('.search-container').style.border = '1px solid #fff';
     });
 
+
+
+
+
+
+
+
+
         //Search Box Outline when Input field is Focused
-        
+       
+       
+       
         document.querySelector('.search-container input').addEventListener('focus', function() {
     document.querySelector('.search-container').style.border = '1px solid #197afe';
     document.querySelector('.search-container').style.boxShadow = '0 0 4px #197afe';
