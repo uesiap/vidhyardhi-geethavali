@@ -104,6 +104,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            
             position: relative;
         }
 
@@ -171,6 +172,7 @@
         .section {
             display: none;
             margin-top: 50px;
+            margin-bottom: 50px;
             transition: opacity 0.5s ease; /* Smooth transition for opacity */
         }
 
@@ -290,21 +292,28 @@
     </div>
     <script>
         // Define separate queues for tracks and songs
+        const songsQueue = [
+            { name: 'Ascharyamaina Prema', url: 'https://archive.org/download/uesiap/15vgSongs1-09Ascharyamaina.mp3' },
+            { name: 'Nee Jeevitham', url: 'https://archive.org/download/uesiap/15vgSongs4-04NeeJeevitham.mp3' },
+            { name: 'Santhoshame Santhoshame', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/songs%2FSanthoshame%20Santhoshame.mp3?alt=media&token=6bc345d9-4355-42cc-8626-5d4dbdf69c6b' },
+            { name: 'Santhoshame neeku kavalaa', url: 'https://archive.org/download/uesiap/11neeve-018Santoshame.mp3' },
+            { name: 'Swetcha Needhe', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/songs%2FSwetcha%20Nedhe.mp3?alt=media&token=30ca0b2c-8819-4c2c-a368-01fb528f603b' },
+            // Add more songs here
+        ];
+        
         const tracksQueue = [
-            { name: '1. Ascharyamaina Prema', url: 'https://srv15.conversion-tool.com/dl/2/20cccacba96f8b7d4f992c4a92af58a2/music/accompaniment.mp3' },
-            { name: '2. Nee Jeevitham', url: 'https://srv15.conversion-tool.com/dl/2/0a2039d47dbe953b59475074c7690c0a/music/accompaniment.mp3' },
-            { name: '3. Yerugudhuva Neevu', url: 'https://you42-mvp-private.s3.amazonaws.com/56/78/c6/0b/1a/b2/81/30/5d/a8/0f/e6/a3/58/41/2a/8jyQgvaBDW4JCcqa.mp3?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARGWWBLBLGMPG5ENB%2F20240813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240813T023746Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=24ad24e8c42d34c50767e898da787ffb282564e68b246704b0e312b189e8d88d' },
+        { name: 'Advithiya Satyadhevudu', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FAdvithiya%20Satya%20Dhevudu.mp3?alt=media&token=376d65f8-422a-46e9-88fd-bc27d45e8718' },
+            { name: 'Ascharyamaina Prema', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FAscharyamaina%20Prema%20Track.mp3?alt=media&token=aad881d0-4772-4f8a-a231-e91eddc3c33f' },
+            { name: 'College Lo Cheranu', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FCollege%20Track.mp3?alt=media&token=76db3350-a7b6-4c69-9199-c60845cb93a4' },
+            { name: 'Nee Jeevitham', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FNee%20Jeevitham%20Track.mp3?alt=media&token=fd5806b4-1a5d-4c03-8b50-5a9722c71318' },
+            { name: 'Oranna Oranna', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FOranna%20Oranna%20Track.mp3?alt=media&token=045cb72a-023a-4515-8c94-3cec6ae7258c' },
+            { name: 'Santhi Santhi Santhi Ra', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FSanthi%20Santhi%20Santhi%20Raa%20Track.mp3?alt=media&token=4b078fc6-614e-41d0-bb9a-dc93f013c313' },
+            { name: 'Santhoshame Santhoshame', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FSanthoshame%20Santhoshame%20Track.mp3?alt=media&token=e4a8e255-0f57-4f46-a1c9-765377bbdc43' },
+            { name: 'Swetcha Needhe', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FSwetcha%20Needhe%20Track.mp3?alt=media&token=0fabea4e-2d30-4da6-a3b7-97f37070c127' },
+            { name: 'Yerugudhuva Neevu', url: 'https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FYerugudhuva%20Neevu%20Sodhara%20T.mp3?alt=media&token=3de12434-9857-4fe2-b5ba-bec56e6b3d57' },
             // Add more tracks here
         ];
 
-        const songsQueue = [
-            { name: '1. Ascharyamaina Prema', url: 'https://archive.org/download/uesiap/15vgSongs1-09Ascharyamaina.mp3' },
-            { name: '2. Nee Jeevitham', url: 'https://archive.org/download/uesiap/15vgSongs4-04NeeJeevitham.mp3' },
-            { name: '3. Santhoshame Santhoshame', url: 'https://you42-mvp-private.s3.amazonaws.com/e6/50/64/47/11/f2/30/0d/d9/7d/f8/78/61/6c/af/02/6fy7XM3ngrm57vsc.mp3?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARGWWBLBLGMPG5ENB%2F20240813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240813T022722Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=3ee5b969768f2cffdb2aab7767f5811e51c383f5682fbde9b9c2bbe9d1e9ad94' },
-            { name: '4. Santhoshame neeku kavalaa', url: 'https://archive.org/download/uesiap/11neeve-018Santoshame.mp3' },
-            { name: '5. Swetcha Needhe', url: 'https://you42-mvp-private.s3.amazonaws.com/98/b3/92/4d/7e/12/98/73/61/28/2d/b6/56/f1/8b/c4/80mesui7zI6X4pD5.mp3?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARGWWBLBLGMPG5ENB%2F20240813%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240813T022607Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=e4703a4e21a4672d67ecb6177caf49dbdf05dec3090837a69979a5b18bba3b35' },
-            // Add more songs here
-        ];
 
         const tracksList = document.getElementById('tracksList');
         const songsList = document.getElementById('songsList');
@@ -455,25 +464,27 @@
         displaySongs();
 
         // Swipe functionality
-        let touchStartX = 0;
-        let touchEndX = 1;
+        
+let touchStartX = 0;
+let touchEndX = 0;
+const swipeThreshold = 70; // Minimum distance in pixels for a valid swipe
 
-        function handleGesture() {
-            if (touchEndX < touchStartX) {
-                showSection('tracks-section');
-            } else if (touchEndX > touchStartX) {
-                showSection('songs-section');
-            }
-        }
+function handleGesture() {
+    if (touchEndX < touchStartX - swipeThreshold) {
+        showSection('tracks-section');
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+        showSection('songs-section');
+    }
+}
 
-        document.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
+document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
 
-        document.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleGesture();
-        });
+document.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+});
 
         //Search Box Outline when Input field is Focused
         document.querySelector('.search-container input').addEventListener('focus', function() {
@@ -484,7 +495,7 @@ document.querySelector('.search-container input').addEventListener('blur', funct
     document.querySelector('.search-container').style.border = '1px solid #fff';
 });
     </script>
-  <footer style="position: fixed; bottom: 20px; width: 100%; background-color: #0c1319; color: #fff; text-align: center; padding: 10px 0; font-family: 'Google Sans', sans-serif;"><p style="margin: 0; font-size: 13px;">©2024 Designed with ❤️ by <a href="https://rahul.serv00.net/profile" style="text-decoration: underline; color: #197afe;"><strong>Rahul</strong></a></p></footer>
+  <footer style="position: fixed; bottom: 0px; width: 100%; background-color: #0c1319; color: #fff; text-align: center; padding: 10px 0; font-family: 'Google Sans', sans-serif;"><p style="margin: 0; font-size: 13px;">©2024 Designed with ❤️ by <a href="https://rahul.serv00.net/profile" style="text-decoration: underline; color: #197afe;"><strong>Rahul</strong></a></p></footer>
   <script>
     // Disable right-click context menu
     document.oncontextmenu = function() {
@@ -514,4 +525,3 @@ document.querySelector('.search-container input').addEventListener('blur', funct
     </script>
 </body>
 </html>
-
