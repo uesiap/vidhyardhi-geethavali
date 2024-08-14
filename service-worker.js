@@ -1,8 +1,8 @@
 const CACHE_NAME = 'my-cache';
 const urlsToCache = [
-  '/vidhyardhi-geethavali',
+  '/vidhyardhi-geethavali/',
   '/vidhyardhi-geethavali/index.html',
-  '/vidhyardhi-geethavali/Icon192.png',
+  '/vidhyardhi-geethavali/Icon192.jpg',
   '/vidhyardhi-geethavali/Icon512.jpg',
   '/vidhyardhi-geethavali/uesisongsmain.jpg'  // Add the splash screen image to the cache
 ];
