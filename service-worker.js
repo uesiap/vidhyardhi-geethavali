@@ -1,6 +1,6 @@
-const CACHE_NAME = 'my-cache';
+const CACHE_NAME = 'my-chach';
 const urlsToCache = [
-  '/',
+  '/vidhyardhi-geethavali',
   '/vidhyardhi-geethavali/index.html',
   '/vidhyardhi-geethavali/Icon192.png',
   '/vidhyardhi-geethavali/Icon512.jpg',
