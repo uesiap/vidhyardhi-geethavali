@@ -22,7 +22,7 @@
   "screens": [
     {
       "src": "/vidhyardhi-geethavali/uesisongsmain.jpg",
-      "sizes": "640x1136", /* Adjust size to match your image */
+      "sizes": "640x1136",
       "type": "image/jpeg",
       "orientation": "portrait"
     }
