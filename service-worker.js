@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-chach';
+const CACHE_NAME = 'my-cache';
 const urlsToCache = [
   '/vidhyardhi-geethavali',
   '/vidhyardhi-geethavali/index.html',
