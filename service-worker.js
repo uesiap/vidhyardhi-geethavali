@@ -1,10 +1,10 @@
 const CACHE_NAME = 'my-cache';
 const urlsToCache = [
   '/',
-  '/index.html',
-  '/Icon192.png',
-  '/Icon512.jpg',
-  '/uesisongsmain.jpg'  // Add the splash screen image to the cache
+  '/vidhyardhi-geethavali/index.html',
+  '/vidhyardhi-geethavali/Icon192.png',
+  '/vidhyardhi-geethavali/Icon512.jpg',
+  '/vidhyardhi-geethavali/uesisongsmain.jpg'  // Add the splash screen image to the cache
 ];
 
 // Install event
