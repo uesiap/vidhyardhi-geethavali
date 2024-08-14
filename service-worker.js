@@ -1,8 +1,8 @@
-const CACHE_NAME = 'melam-rahul';
+const CACHE_NAME = 'my-cache';
 const urlsToCache = [
-  '/vidhyardhi-geethavali/',
+  '/',
   '/vidhyardhi-geethavali/index.html',
-  '/vidhyardhi-geethavali/Icon192.jpg',
+  '/vidhyardhi-geethavali/Icon192.png',
   '/vidhyardhi-geethavali/Icon521.jpg',
   '/vidhyardhi-geethavali/uesisongsmain.jpg'  // Add the splash screen image to the cache
 ];
@@ -10,6 +10,7 @@ const urlsToCache = [
 // Install event
 self.addEventListener('install', event => {
   console.log('Service Worker: Installing');
+  // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -22,6 +23,7 @@ self.addEventListener('install', event => {
 // Activate event
 self.addEventListener('activate', event => {
   console.log('Service Worker: Activating');
+  // Remove old caches
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
@@ -42,20 +44,24 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
+        // Cache hit - return response
         if (response) {
           console.log('Service Worker: Cache hit');
           return response;
         }
 
+        // Clone the request because it's a stream
         const fetchRequest = event.request.clone();
 
         return fetch(fetchRequest).then(
           response => {
+            // Check if we received a valid response
             if (!response || response.status !== 200 || response.type !== 'basic') {
               console.log('Service Worker: Invalid response');
               return response;
             }
 
+            // Clone the response because it's a stream
             const responseToCache = response.clone();
 
             caches.open(CACHE_NAME)
