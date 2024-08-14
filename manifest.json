@@ -4,7 +4,7 @@
   "start_url": "/vidhyardhi-geethavali/app.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0c1319",
+  "background_color": "#fff",
   "theme_color": "#0c1319",
   "icons": [
     {
