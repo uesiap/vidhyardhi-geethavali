@@ -129,8 +129,11 @@
             user-select: none;
         }
 
-        .container {
-            max-width: 700px;
+        @media (max-width: 400px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
             margin: 0 auto;
             color: #fff;
             background-color: #0c1319;
@@ -491,16 +494,16 @@
     <div class="container" style="margin-top: 90px;" id="sections">
         <div class="section active" id="songs-section">
             <ul id="songsList">
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song1" style="border-top: 1px solid #197afe;">1. Anjurapu Chetlu</li>
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song2">2. Antha Nuthaname Yesulo</li>
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song3">3. Andhari Prabhuvu aah Yese</li>
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song4">4. Andhaala assha Kiranam</li>
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song5">5. Edhigo Bhahumaanamu</li>
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song6">6. Advithiya Satyadhevudu</li>
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song7">7. Anudhinam Ninu Dyaninthumu</li>
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song8">8. Apavitrathaku Dhuuramuga</li>
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song9">9. Apavitrathanu dhuraparachumu</li>
-                <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song10" >10. Arpinthudheva Pranatma Dheham</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song1" style="border-top: 1px solid #197afe;">1. అంజూరపు చెట్లు</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song2">2. అంతా నూతనమే యేసులో</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song3">3. అందరి ప్రభువూ ఆ యేసు</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song4">4. ఆంధాల ఆశా కిరణం</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song5">5. అదిగో బహుమానము</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song6">6. అధ్వితీయ సత్యదేవుడు</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song7">7. అనుదినం నిను ధ్యానింతుము</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song8">8. అపవిత్రతకు దూరముగా</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song9">9. అపవిత్రతను దూరపరచుము</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song10">10. అర్పింతుదేవ ప్రాణాత్మదేహం</li>
             </ul>
         </div>
     </div>
@@ -682,30 +685,38 @@
 
 
 
-        // Ripple effect for song items
-        document.querySelectorAll('#songsList li').forEach(item => {
-            item.addEventListener('click', function(e) {
-                var ripple = document.createElement('span');
-                ripple.className = 'ripple';
-                this.appendChild(ripple);
-                
-                // Calculate the position and size of the ripple
-                var rect = this.getBoundingClientRect();
-                var size = Math.max(rect.width, rect.height);
-                var x = e.clientX - rect.left - size / 2;
-                var y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                
-                // Trigger the animation
-                ripple.style.animation = 'ripple-animation 0.6s linear';
-                
-                // Redirect to the song link
-                window.location.href = this.getAttribute('data-link');
-            });
-        });
+       
+       // Ripple effect for song items
+document.querySelectorAll('#songsList li').forEach(item => {
+    item.addEventListener('click', function(e) {
+        var ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        this.appendChild(ripple);
+        
+        // Remove any existing ripple
+        var existingRipple = this.querySelector('.ripple');
+        if (existingRipple) {
+            existingRipple.remove();
+        }
+
+        // Calculate the position and size of the ripple
+        var rect = this.getBoundingClientRect();
+        var size = Math.max(rect.width, rect.height);
+        var x = e.clientX - rect.left - size / 2;
+        var y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        
+        // Trigger the animation
+        ripple.style.animation = 'ripple-animation 0.6s linear';
+        
+        // Redirect to the song link
+        window.location.href = this.getAttribute('data-link');
+    });
+});
+
         
         document.querySelectorAll('#songsList li').forEach(item => {
     item.addEventListener('click', function(e) {
