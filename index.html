@@ -267,19 +267,16 @@
 
         #songsList li {
     border: 1px solid #197afe;
-    border-radius: 0px;
+    border-radius: 20px;
     padding: 15px 0 15px -10px; /* Padding for top, right, bottom, and left */
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     color: white;
     text-indent: 20px;
     cursor: pointer;
     align-items: center;
     position: relative;
     justify-content: center;
-    overflow: hidden;
-    border-left: none;
-    border-right: none;
-    border-top: none; /* Remove top border to add dividing line */
+    overflow: hidden;/* Remove top border to add dividing line */
 }
 
         #songsList li:hover .ripple {
@@ -289,7 +286,7 @@
       .ripple {
     position: absolute;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
+    background: #aaa;
     pointer-events: none;
     transform: scale(0);
     opacity: 0;
@@ -488,10 +485,11 @@
     </div>
 
     <!-- Song List Section -->
-    <div class="container" style="margin-top: 90px;" id="sections">
+    <div class="container" style="margin-top: 70px;" id="sections">
         <div class="section active" id="songs-section">
+          <p style="font-size: 18px">Telugu Songs</p>
             <ul id="songsList">
-    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song1" style="border-top: 1px solid #197afe;">1. అంజూరపు చెట్లు</li>
+    <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song1">1. అంజూరపు చెట్లు పూయకుండినను</li>
     <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song2">2. అంతా నూతనమే యేసులో</li>
     <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song3">3. అందరి ప్రభువూ ఆ యేసు</li>
     <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song4">4. ఆంధాల ఆశా కిరణం</li>
@@ -502,8 +500,12 @@
     <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song9">9. అపవిత్రతను దూరపరచుము</li>
     <li data-link="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song10">10. అర్పింతుదేవ ప్రాణాత్మదేహం</li>
             </ul>
+            
         </div>
     </div>
+    
+    <footer style=" align-items: center; justify-content: center; padding-top: 0px; margin-bottom: 1px; width: 100%; height: 12px; background-color: #0c1319; color: #fff; text-align: center; padding: 5px 0;font-family: 'Google Sans', sans-serif;"><p style="margin: 0; font-family: 'Google Sans', sans-serif; font-size: 13px;">©2024 Designed with ❤️ by <a href="https://rahul.serv00.net/profile" style="text-decoration: underline; color: #197afe">M.Rahul</a></p>
+    </footer>
 
     <!-- Scripts for functionality -->
     <script>
@@ -529,11 +531,11 @@
             if (!isSearchBoxOpen) {
                 // Open the search box
                 searchBox.style.display = 'flex';
-                sectionsContainer.style.marginTop = '140px';
+                sectionsContainer.style.marginTop = '120px';
             } else {
                 // Close the search box
                 searchBox.style.display = 'none';
-                sectionsContainer.style.marginTop = '90px';
+                sectionsContainer.style.marginTop = '70px';
             }
 
             // Toggle the state
@@ -682,30 +684,32 @@
 
 
 
-        // Ripple effect for song items
-        document.querySelectorAll('#songsList li').forEach(item => {
-            item.addEventListener('click', function(e) {
-                var ripple = document.createElement('span');
-                ripple.className = 'ripple';
-                this.appendChild(ripple);
-                
-                // Calculate the position and size of the ripple
-                var rect = this.getBoundingClientRect();
-                var size = Math.max(rect.width, rect.height);
-                var x = e.clientX - rect.left - size / 2;
-                var y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                
-                // Trigger the animation
-                ripple.style.animation = 'ripple-animation 0.6s linear';
-                
-                // Redirect to the song link
-                window.location.href = this.getAttribute('data-link');
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('#songsList li').forEach(item => {
+        item.addEventListener('click', function(e) {
+            var ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            this.appendChild(ripple);
+            
+            // Calculate the position and size of the ripple
+            var rect = this.getBoundingClientRect();
+            var size = Math.max(rect.width, rect.height);
+            var x = e.clientX - rect.left - size / 2;
+            var y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            // Trigger the animation
+            ripple.style.animation = 'ripple-animation 0.6s linear';
+            
+            // Redirect to the song link
+            window.location.href = this.getAttribute('data-link');
         });
+    });
+});
+
         
         document.querySelectorAll('#songsList li').forEach(item => {
     item.addEventListener('click', function(e) {
@@ -740,5 +744,45 @@
 });
 
     </script>
-</body>
+    <script>
+    // Disable right-click context menu
+    document.oncontextmenu = function() {
+        return false;
+    };
+
+    // Disable certain key combinations
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+    };
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
+    <script>
+        DisableDevtool({
+            ondevtoolopen: (type) => {
+                window.location.href = "https://www.google.com/";
+            },
+        });
+    </script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/vidhyardhi-geethavali/service-worker.js')
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                })
+                .catch(function(error) {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+            });
+        }
+    </script>   
+    </body>
 </html>
