@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans+Telugu' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>చికభం | Vidhyardhi Geethavali Song</title>
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Read the Telugu lyrics of 'చికభం' and enjoy the song with its beautiful verses.">
+    <meta name="keywords" content="Telugu lyrics, చికభం, song lyrics, Telugu songs, music, uesi ap songs, vidhyardhi geethavali songs">
+    <meta name="author" content="Melam Rahul">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song7.html">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="చికభం">
+    <meta property="og:description" content="Explore the lyrics of 'చికభం' and find joy in Telugu music.">
+    <meta property="og:image" content="https://uesiap.github.io/vidhyardhi-geethavali/Icon192.jpg">
+    <meta property="og:url" content="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song7.html">
+    <meta property="og:type" content="website">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Telugu', sans-serif;
+            background-color: #0c1319;
+            color: #fff;
+        }
+
+        .lyrics {
+            margin: 20px;
+            padding: 20px;
+            background-color: #0c1319;
+            color: #fff;
+            position: relative;
+            animation: fade-in 0.9s ease-in-out forwards;
+            border-radius: 8px;
+        }
+
+        .lyricsHead {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 35px;
+            background-color: #0c1319;
+            color: #fff;
+            font-size: 1.25rem;
+            padding: 5px;
+            border-radius: 8px;
+            border: 1px solid #197afe;
+            width: 100%;
+            height: 40px;
+            margin-left: -8px;
+        }
+
+        .lyricsHead b {
+            margin: 0;
+        }
+
+        .back-button {
+            margin-left: 10px;
+        }
+
+        .next-button {
+            margin-right: 10px;
+        }
+
+        .back-button,
+        .next-button {
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background-color: #0c1319;
+            border: 1px solid #197afe;
+            font-size: 20px;
+        }
+
+        .arrow {
+            font-size: 20px;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .lyrics {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            .lyricsHead {
+                font-size: 1rem;
+            }
+
+            .back-button,
+            .next-button {
+                height: 25px;
+                width: 25px;
+            }
+
+            .arrow {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lyricsHead {
+                font-size: 0.875rem;
+            }
+
+            .back-button,
+            .next-button {
+                height: 20px;
+                width: 20px;
+            }
+
+            .arrow {
+                font-size: 14px;
+            }
+        }
+
+        /* Audio Player Styling */
+        .audio-player {
+            position: fixed;
+            bottom: 65px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #1c1f24;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Track Player Styling */
+        .track-player {
+            position: fixed;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #1c1f24;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .play-pause-btn {
+            background-color: #197afe;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 16px;
+            height: 40px;
+            width: 40px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .seek-slider {
+            width: 100%;
+            cursor: pointer;
+            margin-right: 15px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #197afe;
+            height: 5px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .seek-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background: #fff;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+        }
+
+        .seek-slider::-moz-range-thumb {
+            background: #fff;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+        }
+
+        .time-indicator {
+            color: #fff;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lyrics">
+        <div class="lyricsHead">
+            <a class="back-button" onclick="history.back(); return false;">
+                <span class="arrow" style="margin-top: 5px;"><i class="fas fa-arrow-left"></i></span>
+            </a>
+            <b style="font-size: 16px">చికభం</b>
+            <span class="arrow" style="margin-top: 5px; color: #0c1319"><i style="color: #0c1319" class="fas fa-arrow-right"></i></span>
+        </div>
+        <div style="text-align: left; margin-bottom: 130px">
+            <span>కాలేజిలో చేరాను - లేజీగా మారాను<br>
+                నామోజు తీరిందిగా - బూజెంతో చేరిందిరో<br>
+                బాసు - చదువంతా లూజయిందిరొ<br>
+                చికభం చికభం చికభం<br>
+                లలలా లలలా లలలా<br><br>
+
+                1. రాగింగ్‌ చేశారు నన్ను - రోజంతా తిన్నారు<br>
+                బాదారు నన్ను - మనసంతా గాయాలు<br>
+                చెలరేగిన తాపాలు - చెడిపోయిన భావాలు మిగిలాయిరో (2)  ||చికభం||<br><br>
+
+                2. అలవాటు చేశారు మందు - ఆపైన నేర్పారు<br>
+                గుట్కా పసందు - మతిలేని మాటలెన్నో<br>
+                అతివాగుడు పేలాపనలే - గతితప్పిన<br>
+                సావాసాలే మిగిలాయిరా(2)   ||చికభం||<br><br>
+
+                3. కవ్వించే అందాలు చూసి - రంగేళి<br>
+                హంగులెన్నో నేర్పాను నేను - పోటీలో<br>
+                ఓడాను - నాటీగా మారాను - ఆపై గలాటాలు మిగిలాయిరా (2)  ||చికభం||<br><br>
+
+                4. భవిష్యత్తు నాకింకా లేదు - బాధలతో<br>
+                బ్రతుకంత బహు భారమాయె - మనశ్శాంతి<br>
+                కావాలి - సంతోషం కావాలి - బ్రతుకంతా నెమ్మదిగా గడపాలిరా (2) ||చికభం ||<br>
+            </span>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <div class="audio-player">
+    &nbsp;<span id="audioCurrentTime" class="time-indicator">0:00</span>
+    &nbsp;<input type="range" id="audioSeekSlider" class="seek-slider" value="0" max="100">
+    &nbsp;<div class="audio-controls">
+       &nbsp; <span id="audioDurationTime" class="time-indicator">0:00</span>
+       <button id="audioPlayPauseBtn" class="play-pause-btn"><i class="fas fa-play"></i></button><p>Audio</p>
+    </div>
+    <audio id="audioPlayer" src="https://archive.org/download/uesiap/16learnAndTeach-04College.mp3"></audio>
+    </div>
+
+<!-- Track Player -->
+<div class="track-player">
+    &nbsp;<span id="trackCurrentTime" class="time-indicator">0:00</span>
+    &nbsp;<input type="range" id="trackSeekSlider" class="seek-slider" value="0" max="100">
+    &nbsp;<div class="audio-controls">
+       &nbsp; <span id="trackDurationTime" class="time-indicator">0:00</span>
+        <button id="trackPlayPauseBtn" class="play-pause-btn"><i class="fas fa-play"></i></button><p>Track</p>
+    </div>
+    <audio id="trackPlayer" src="https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FCollege%20Track.mp3?alt=media&token=76db3350-a7b6-4c69-9199-c60845cb93a4"></audio>
+    </div>
+
+
+    <script>
+       // Audio and Track Player Elements
+const audioPlayer = document.getElementById('audioPlayer');
+const trackPlayer = document.getElementById('trackPlayer');
+const audioPlayPauseBtn = document.getElementById('audioPlayPauseBtn');
+const trackPlayPauseBtn = document.getElementById('trackPlayPauseBtn');
+const audioSeekSlider = document.getElementById('audioSeekSlider');
+const trackSeekSlider = document.getElementById('trackSeekSlider');
+const audioCurrentTimeIndicator = document.getElementById('audioCurrentTime');
+const trackCurrentTimeIndicator = document.getElementById('trackCurrentTime');
+const audioDurationTimeIndicator = document.getElementById('audioDurationTime');
+const trackDurationTimeIndicator = document.getElementById('trackDurationTime');
+
+// Event Listener for Audio Play/Pause Button
+audioPlayPauseBtn.addEventListener('click', () => {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        audioPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        trackPlayer.pause();
+        trackPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    } else {
+        audioPlayer.pause();
+        audioPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+});
+
+// Event Listener for Track Play/Pause Button
+trackPlayPauseBtn.addEventListener('click', () => {
+    if (trackPlayer.paused) {
+        trackPlayer.play();
+        trackPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        audioPlayer.pause();
+        audioPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    } else {
+        trackPlayer.pause();
+        trackPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+});
+
+// Update Seek Sliders and Time Indicators
+function updatePlayer(player, seekSlider, currentTimeIndicator, durationTimeIndicator) {
+    player.addEventListener('loadedmetadata', () => {
+        seekSlider.max = player.duration;
+        durationTimeIndicator.textContent = formatTime(player.duration);
+    });
+
+    player.addEventListener('timeupdate', () => {
+        seekSlider.value = player.currentTime;
+        currentTimeIndicator.textContent = formatTime(player.currentTime);
+    });
+
+    seekSlider.addEventListener('input', () => {
+        player.currentTime = seekSlider.value;
+    });
+}
+
+// Format time in minutes and seconds
+function formatTime(timeInSeconds) {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = Math.floor(timeInSeconds % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// Initialize Players
+updatePlayer(audioPlayer, audioSeekSlider, audioCurrentTimeIndicator, audioDurationTimeIndicator);
+updatePlayer(trackPlayer, trackSeekSlider, trackCurrentTimeIndicator, trackDurationTimeIndicator);
+
+
+
+    </script>
+    <script>
+    
+
+    // Disable certain key combinations
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+    };
+</script>
+
+
+
+
+<script src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+<script>
+    DisableDevtool({
+        ondevtoolopen: (type) => {
+            const info = 'devtool opened!; type =' + type;
+            alert(info); // If you are worried about blocking the page, use console.warn(info); and open the console to view
+        },
+    })
+</script>
+</body>
+
+</html>
