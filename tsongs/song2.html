@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans+Telugu' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>అంతా నూతనమే యేసులో</title>
+    <title>అంతా నూతనమే | Vidhyardhi Geethavali Song</title>
     <!-- Meta Tags for SEO -->
-    <meta name="description" content="Read the Telugu lyrics of 'అంతా నూతనమే యేసులో'. Explore the beauty of the song and its meaning.">
-    <meta name="keywords" content="Telugu lyrics, అంతా నూతనమే, song lyrics, Telugu songs, music, antha nuthanamee, anta nutaname, uesi, ap, vidhyardhi, vidhyarthi, geethavali, songs, song 2, Jesus">
-    <meta name="author" content="Your Name or Organization">
+    <meta name="description" content="Read the Telugu lyrics of 'అంతా నూతనమే'. Enjoy the beautiful verses and explore the meaning behind the lyrics.">
+    <meta name="keywords" content="Telugu lyrics, అంతా నూతనమే, song lyrics, Telugu songs, music, uesi ap songs, vidhyardhi geethavali songs, antha nuthaname song, uesi ap songs">
+    <meta name="author" content="Melam Rahul">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song2.html">
-    
+
     <!-- Open Graph Meta Tags for Social Media -->
-    <meta property="og:title" content="అంతా నూతనమే యేసులో">
-    <meta property="og:description" content="Explore the lyrics of 'అంతా నూతనమే యేసులో' and find joy in Telugu music.">
+    <meta property="og:title" content="అంతా నూతనమే">
+    <meta property="og:description" content="Explore the lyrics of 'అంతా నూతనమే' and find joy in Telugu music.">
     <meta property="og:image" content="https://uesiap.github.io/vidhyardhi-geethavali/Icon192.jpg">
     <meta property="og:url" content="https://uesiap.github.io/vidhyardhi-geethavali/tsongs/song2.html">
     <meta property="og:type" content="website">
@@ -26,10 +27,6 @@
             font-family: 'Noto Sans Telugu', sans-serif;
             background-color: #0c1319;
             color: #fff;
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
         }
 
         .lyrics {
@@ -65,9 +62,11 @@
         .back-button {
             margin-left: 10px;
         }
+
         .next-button {
             margin-right: 10px;
         }
+
         .back-button,
         .next-button {
             cursor: pointer;
@@ -135,26 +134,176 @@
                 font-size: 14px;
             }
         }
+
+        /* Audio Player Styling */
+        .audio-player {
+            position: fixed;
+            bottom: 65px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #1c1f24;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Track Player Styling */
+        .track-player {
+            position: fixed;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #1c1f24;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .play-pause-btn {
+            background-color: #197afe;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 16px;
+            height: 40px;
+            width: 40px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .seek-slider {
+            width: 100%;
+            cursor: pointer;
+            margin-right: 15px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #197afe;
+            height: 5px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .seek-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background: #fff;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+        }
+
+        .seek-slider::-moz-range-thumb {
+            background: #fff;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+        }
+
+        .time-indicator {
+            color: #fff;
+            margin-right: 10px;
+        }
     </style>
 </head>
+
 <body>
     <div class="lyrics">
         <div class="lyricsHead">
             <a class="back-button" onclick="history.back(); return false;">
-    <span class="arrow" style="margin-top: 5px;"><i class="fas fa-arrow-left"></i></span>
+                <span class="arrow" style="margin-top: 5px;"><i class="fas fa-arrow-left"></i></span>
             </a>
             <b style="font-size: 16px">అంతా నూతనమే</b>
             <span class="arrow" style="margin-top: 5px; color: #0c1319"><i style="color: #0c1319" class="fas fa-arrow-right"></i></span>
-        
         </div>
         <div style="text-align: left;">
             <span>అంతా నూతనమే యేసులో అంతా నూతనమే<br>
-            పాతవి గతించి క్రొత్తవి వచ్చెన్‌ అంతా నూతనమే<br><br></span>
-        </div>
-        <div style="text-align: left;">
-            <span>చింతలు బాధలు శోధన వ్యధలే పీడించెను మునుపు<br>
-            పాపము తుడిచి నూతనపర్చి ప్రేమతో నింపెను నా ప్రభువే</span>
+                పాతవి గతించి క్రొత్తవి వచ్చెన్‌ అంతా నూతనమే<br>
+                చింతలు బాధలు శోధన వ్యధలే పీడించెను మునుపు<br>
+                పాపము తుడిచి నూతనపర్చి ప్రేమతో నింపెను నా ప్రభువే<br><br></span>
         </div>
     </div>
+
+    <!-- Audio Player -->
+    <div class="audio-player">
+        &nbsp;<span id="audioCurrentTime" class="time-indicator">0:00</span>
+        &nbsp;<input type="range" id="audioSeekSlider" class="seek-slider" value="0" max="100">
+        &nbsp;<div class="audio-controls">
+           &nbsp; <span id="audioDurationTime" class="time-indicator">0:00</span>
+           <button id="audioPlayPauseBtn" class="play-pause-btn"><i class="fas fa-play"></i></button><p>Audio</p>
+        </div>
+        <audio id="audioPlayer" src="https://archive.org/download/uesiap/15vgSongs1-01AnthaNuthaname.mp3"></audio>
+    </div>
+
+    <!-- Track Player -->
+    <!--
+    <div class="track-player">
+        &nbsp;<span id="trackCurrentTime" class="time-indicator">0:00</span>
+        &nbsp;<input type="range" id="trackSeekSlider" class="seek-slider" value="0" max="100">
+        &nbsp;<div class="audio-controls">
+           &nbsp; <span id="trackDurationTime" class="time-indicator">0:00</span>
+           <button id="trackPlayPauseBtn" class="play-pause-btn"><i class="fas fa-play"></i></button><p>Track</p>
+        </div>
+        <audio id="trackPlayer" src="TRACK_LINK_HERE"></audio>
+    </div>
+    -->
+
+    <script>
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioPlayPauseBtn = document.getElementById('audioPlayPauseBtn');
+        const audioCurrentTime = document.getElementById('audioCurrentTime');
+        const audioDurationTime = document.getElementById('audioDurationTime');
+        const audioSeekSlider = document.getElementById('audioSeekSlider');
+
+        audioPlayer.addEventListener('loadedmetadata', () => {
+            audioSeekSlider.max = audioPlayer.duration;
+            audioDurationTime.textContent = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener('timeupdate', () => {
+            audioSeekSlider.value = audioPlayer.currentTime;
+            audioCurrentTime.textContent = formatTime(audioPlayer.currentTime);
+        });
+
+        audioSeekSlider.addEventListener('input', () => {
+            audioPlayer.currentTime = audioSeekSlider.value;
+        });
+
+        audioPlayPauseBtn.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                audioPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                audioPlayer.pause();
+                audioPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+            return `${minutes}:${seconds}`;
+        }
+    </script>
 </body>
+
 </html>
