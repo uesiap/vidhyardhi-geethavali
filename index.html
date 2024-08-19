@@ -763,13 +763,36 @@
         }
     };
   </script>
-    <script src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
     <script>
-        DisableDevtool({
-            ondevtoolopen: (type) => {
-                window.location.href = "https://www.google.com/";
-            },
-        });
+        function detectDevTools() {
+            let devtoolsOpen = false;
+            const threshold = 160; // Threshold for detecting devtools open
+
+            function checkDevTools() {
+                const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+                const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+
+                if (widthThreshold || heightThreshold) {
+                    devtoolsOpen = true;
+                    handleDevToolsOpen();
+                } else {
+                    devtoolsOpen = false;
+                }
+            }
+
+            function handleDevToolsOpen() {
+                if (devtoolsOpen) {
+                    alert("You can't see the Source Code");
+                    // Redirect to Google
+                    window.location.href = "https://google.com";
+                }
+            }
+
+            // Check periodically
+            setInterval(checkDevTools, 1000);
+        }
+
+        window.onload = detectDevTools;
     </script>
     <script>
         if ('serviceWorker' in navigator) {
