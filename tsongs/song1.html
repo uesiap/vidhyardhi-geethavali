@@ -138,9 +138,24 @@
         /* Audio Player Styling */
         .audio-player {
             position: fixed;
-            bottom: 0;
+            bottom: 65px;
             left: 0;
             width: 100%;
+            height: 40px;
+            background-color: #1c1f24;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .track-player {
+          position: fixed;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: 40px;
             background-color: #1c1f24;
             display: flex;
             justify-content: space-between;
@@ -235,59 +250,97 @@
     </div>
 
     <!-- Audio Player -->
-    <div class="audio-player">
-        &nbsp;<span id="currentTime" class="time-indicator">0:00</span>
-        &nbsp;<input type="range" id="seekSlider" class="seek-slider" value="0" max="100">
-        &nbsp;<div class="audio-controls" style="user-select: none; -webkit-user-select: none; -moz-user-select: none;-ms-user-select: none;">
-           &nbsp; <span id="durationTime" class="time-indicator">0:00</span>
-            &emsp; &emsp;<button id="playPauseBtn" class="play-pause-btn"><i class="fas fa-play"></i></button>
-        </div>
-        <audio id="audioPlayer" src="https://ia801305.us.archive.org/6/items/uesiap/15vgSongs1-10Anjurapu.mp3"></audio>
+<div class="audio-player">
+    &nbsp;<span id="audioCurrentTime" class="time-indicator">0:00</span>
+    &nbsp;<input type="range" id="audioSeekSlider" class="seek-slider" value="0" max="100">
+    &nbsp;<div class="audio-controls">
+       &nbsp; <span id="audioDurationTime" class="time-indicator">0:00</span>
+       <button id="audioPlayPauseBtn" class="play-pause-btn"><i class="fas fa-play"></i></button><p>Audio</p>
     </div>
+    <audio id="audioPlayer" src="https://ia801305.us.archive.org/6/items/uesiap/15vgSongs1-10Anjurapu.mp3"></audio>
+</div>
+
+<!-- Track Player -->
+<div class="track-player">
+    &nbsp;<span id="trackCurrentTime" class="time-indicator">0:00</span>
+    &nbsp;<input type="range" id="trackSeekSlider" class="seek-slider" value="0" max="100">
+    &nbsp;<div class="audio-controls">
+       &nbsp; <span id="trackDurationTime" class="time-indicator">0:00</span>
+        <button id="trackPlayPauseBtn" class="play-pause-btn"><i class="fas fa-play"></i></button><p>Track</p>
+    </div>
+    <audio id="trackPlayer" src="https://firebasestorage.googleapis.com/v0/b/uesi-ap.appspot.com/o/tracks%2FAscharyamaina%20Prema%20Track.mp3?alt=media&token=aad881d0-4772-4f8a-a231-e91eddc3c33f"></audio>
+</div>
+
 
     <script>
-        const audioPlayer = document.getElementById('audioPlayer');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const seekSlider = document.getElementById('seekSlider');
-        const currentTimeIndicator = document.getElementById('currentTime');
-        const durationTimeIndicator = document.getElementById('durationTime');
-        
-        // Update the seek slider's max value when the metadata is loaded
-        audioPlayer.addEventListener('loadedmetadata', () => {
-            seekSlider.max = audioPlayer.duration;
-            durationTimeIndicator.textContent = formatTime(audioPlayer.duration);
-        });
+       // Audio and Track Player Elements
+const audioPlayer = document.getElementById('audioPlayer');
+const trackPlayer = document.getElementById('trackPlayer');
+const audioPlayPauseBtn = document.getElementById('audioPlayPauseBtn');
+const trackPlayPauseBtn = document.getElementById('trackPlayPauseBtn');
+const audioSeekSlider = document.getElementById('audioSeekSlider');
+const trackSeekSlider = document.getElementById('trackSeekSlider');
+const audioCurrentTimeIndicator = document.getElementById('audioCurrentTime');
+const trackCurrentTimeIndicator = document.getElementById('trackCurrentTime');
+const audioDurationTimeIndicator = document.getElementById('audioDurationTime');
+const trackDurationTimeIndicator = document.getElementById('trackDurationTime');
 
-        // Play/Pause button functionality
-        playPauseBtn.addEventListener('click', () => {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                audioPlayer.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            }
-        });
+// Event Listener for Audio Play/Pause Button
+audioPlayPauseBtn.addEventListener('click', () => {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        audioPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        trackPlayer.pause();
+        trackPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    } else {
+        audioPlayer.pause();
+        audioPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+});
 
-        // Update the seek slider as the audio plays
-        audioPlayer.addEventListener('timeupdate', () => {
-            seekSlider.value = audioPlayer.currentTime;
-            currentTimeIndicator.textContent = formatTime(audioPlayer.currentTime);
-        });
+// Event Listener for Track Play/Pause Button
+trackPlayPauseBtn.addEventListener('click', () => {
+    if (trackPlayer.paused) {
+        trackPlayer.play();
+        trackPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        audioPlayer.pause();
+        audioPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    } else {
+        trackPlayer.pause();
+        trackPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+});
 
-        // Seek functionality
-        seekSlider.addEventListener('input', () => {
-            audioPlayer.currentTime = seekSlider.value;
-        });
+// Update Seek Sliders and Time Indicators
+function updatePlayer(player, seekSlider, currentTimeIndicator, durationTimeIndicator) {
+    player.addEventListener('loadedmetadata', () => {
+        seekSlider.max = player.duration;
+        durationTimeIndicator.textContent = formatTime(player.duration);
+    });
 
-        // Format time in minutes and seconds
-        function formatTime(timeInSeconds) {
-            const minutes = Math.floor(timeInSeconds / 60);
-            const seconds = Math.floor(timeInSeconds % 60);
-            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-        
-        
+    player.addEventListener('timeupdate', () => {
+        seekSlider.value = player.currentTime;
+        currentTimeIndicator.textContent = formatTime(player.currentTime);
+    });
+
+    seekSlider.addEventListener('input', () => {
+        player.currentTime = seekSlider.value;
+    });
+}
+
+// Format time in minutes and seconds
+function formatTime(timeInSeconds) {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = Math.floor(timeInSeconds % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// Initialize Players
+updatePlayer(audioPlayer, audioSeekSlider, audioCurrentTimeIndicator, audioDurationTimeIndicator);
+updatePlayer(trackPlayer, trackSeekSlider, trackCurrentTimeIndicator, trackDurationTimeIndicator);
+
+
+
     </script>
 </body>
 
