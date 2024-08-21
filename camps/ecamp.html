@@ -130,7 +130,7 @@
             font-family: 'Google Sans', sans-serif;
             background: white;
             margin: 0;
-            margin-top: 90px;
+            margin-top: 105px;
             padding: 0;
         }
 
@@ -140,7 +140,7 @@
             padding: 9px;
             width: calc(100% - 10px);
             border-bottom: 2px solid #197afe;
-            z-index: 100;
+            z-index: 1000;
             border-left: 2px solid #f58742;
             border-right: 2px solid green;
             border-bottom-left-radius: 20px;
@@ -346,10 +346,22 @@
             padding: 10px 0px;
             padding-left: 20px;
         }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
     </style>
 </head>
 
 <body class="body_container">
+    <div id="overlay"></div>
     <nav>
         <div class="nav_div">
             <img class="head_img"
@@ -498,23 +510,46 @@
         const specialContainer = document.getElementById('menu_sub_special_js');
         const aimsContainer = document.getElementById('menu_sub_aims_js');
         const audioContainer = document.getElementById('menu_sub_audio_js');
+        const overlay = document.getElementById('overlay');
 
         //Search Box Visibility
         searchButton.addEventListener('click', function () {
             const isSearchVisible = searchContainer.style.display === "block";
-            searchContainer.style.display = isSearchVisible ? "none" : "block";
-            if (searchButton.classList.contains('fa-search')) {
-                searchButton.classList.remove('fa-search');
-                searchButton.classList.add('fa-times');
-            } else {
+
+            if (isSearchVisible) {
+                // Hide the search container and remove the box shadow
+                searchContainer.style.display = "none";
                 searchButton.classList.remove('fa-times');
                 searchButton.classList.add('fa-search');
+                searchContainer.style.boxShadow = 'none'; // Remove box shadow from the container
+                searchInput.removeEventListener('focus', addBoxShadow); // Remove focus event listener
+                searchInput.removeEventListener('blur', removeBoxShadow); // Remove blur event listener
+                searchInput.value = '';
+            } else {
+                // Show the search container
+                searchContainer.style.display = "block";
+                searchButton.classList.remove('fa-search');
+                searchButton.classList.add('fa-times');
+                // Add event listeners for focus and blur
+                searchInput.addEventListener('focus', addBoxShadow);
+                searchInput.addEventListener('blur', removeBoxShadow);
             }
         });
+
+        // Function to add box shadow to the search container when input is focused
+        function addBoxShadow() {
+            searchContainer.style.boxShadow = '0 0 2px 2px #197afe'; // Adjust shadow as needed
+        }
+
+        // Function to remove box shadow from the search container when input loses focus
+        function removeBoxShadow() {
+            searchContainer.style.boxShadow = 'none'; // Remove box shadow
+        }
         //Menu Box Visibility
         menuButton.addEventListener('click', function () {
             const isMenuVisible = menuContainer.style.display === "block";
             menuContainer.style.display = isMenuVisible ? "none" : "block";
+            overlay.style.display = isMenuVisible ? "none" : "block";
             if (menuButton.classList.contains('fa-bars')) {
                 menuButton.classList.remove('fa-bars');
                 menuButton.classList.add('fa-times');
@@ -523,6 +558,13 @@
                 menuButton.classList.add('fa-bars');
             }
         });
+        overlay.addEventListener('click', function () {
+            menuContainer.style.display = "none";
+            overlay.style.display = "none";
+            menuButton.classList.remove('fa-times');
+            menuButton.classList.add('fa-bars');
+        });
+
         //Camp Sub Item Visibility
         campButton.addEventListener('click', function () {
             campContainer.style.display = campContainer.style.display === "none" ? "block" : "none";
