@@ -367,10 +367,31 @@
             display: none;
             z-index: 999;
         }
+         #preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #preloader img {
+            width: 90%;
+            /* Adjust the size as needed */
+            height: auto;
+        }
     </style>
 </head>
 
 <body class="body_container">
+    <div id="preloader">
+        <img src="https://uesiap.github.io/vidhyardhi-geethavali/uesisongsmain.jpg" alt="Loading...">
+    </div>
     <div id="overlay"></div>
     <nav>
         <div class="nav_div">
@@ -468,6 +489,25 @@
     </footer>
 
     <script>
+        window.addEventListener('load', function () {
+            // Set a timeout to remove the preloader after 2 seconds
+            setTimeout(function () {
+                var preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    preloader.style.transition = 'opacity 1s ease';
+
+                    // Wait for the transition to complete before removing the element
+                    setTimeout(function () {
+                        var preloaderImage = preloader.querySelector('img');
+                        if (preloaderImage) {
+                            preloaderImage.remove(); // This removes the image from the preloader
+                        }
+                        preloader.parentNode.removeChild(preloader); // This removes the preloader itself
+                    }, 500); // 500ms matches the CSS transition duration
+                }
+            }, 1000); // 2 seconds delay
+        });
         const searchInput = document.getElementById('search_input_js');
         const searchButton = document.getElementById('search_icon_js');
         const searchContainer = document.getElementById('search_container_js');
@@ -482,7 +522,7 @@
         const aimsContainer = document.getElementById('menu_sub_aims_js');
         const audioContainer = document.getElementById('menu_sub_audio_js');
         const overlay = document.getElementById('overlay');
-
+        
         //Search Box Visibility
         searchButton.addEventListener('click', function () {
             const isSearchVisible = searchContainer.style.display === "block";
