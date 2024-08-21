@@ -313,7 +313,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
-
             position: relative;
         }
 
@@ -332,6 +331,7 @@
 
         .tab-container {
             display: flex;
+            margin-top: 150px;
             justify-content: center;
         }
 
@@ -350,14 +350,12 @@
         }
 
         .tab.active {
-            color: #197afe;
+            color: #f5025f;
 
         }
 
         .section {
             display: none;
-            margin-top: 50px;
-            margin-bottom: 50px;
             transition: opacity 0.5s ease;
             /* Smooth transition for opacity */
         }
@@ -587,13 +585,13 @@
             </div>
         </div>
     </nav>
-        <div class="tab-container" style="margin:5px; border: 1px solid black;border-radius: 20px">
+        <div class="tab-container" style="margin-top: 90px; border: 1px solid black;border-radius: 20px">
             <button class="tab active" onclick="showSection('songs-section')"
                 style="border-right: 1px solid black; margin-right: -0.5px; margin-bottom: 0px; display: inline-flex; border-radius: 50px 0 0 50px;">Songs</button>
             <button class="tab" onclick="showSection('tracks-section')"
                 style="border-left: 1px solid black; margin-left: -0.5px;margin-bottom: 0px; display: inline-flex; border-radius: 0 50px 50px 0;">Tracks</button>
         </div>
-        <div class="container-tab" style="margin-top: -70px;" id="sections">
+        <div class="container-tab" style="margin-top: 0px;" id="sections">
             <div class="section active" id="songs-section">
                 <ul id="songsList"></ul>
             </div>
