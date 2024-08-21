@@ -181,7 +181,7 @@
             margin-left: -8px;
             margin-bottom: 20px;
         }
-
+        .head_icon_search,
         .head_icon_bars {
             color: #197afe;
             border: 1px solid black;
@@ -194,6 +194,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        .head_icon_search {
+            margin-left: -5px;
         }
 
         .head_icon_bars {
@@ -246,6 +249,44 @@
             margin-top: -20px;
             display: flex;
             justify-content: center;
+            align-items: center;
+        }
+
+        .search_container {
+            display: none;
+            border: 1px solid black;
+            border-radius: 20px;
+            height: 35px;
+            width: 80%;
+
+            margin-bottom: 11px;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        .search_input_icon {
+            color: #197afe;
+            margin-top: 0px;
+            margin-left: 10px;
+        }
+
+        .search_container_input {
+            border: none;
+            height: 90%;
+            width: 85%;
+            margin-left: 5px;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 20px;
+        }
+
+        .search_container_input:focus {
+            outline: none;
+            color: #035914
+        }
+
+        .search_container.open {
+            display: flex;
             align-items: center;
         }
 
@@ -538,8 +579,13 @@
                 width="45px" height="45px" alt="Logo">
             <h2 class="ecamp_nav_head_text">UESI AP Audio Visuals Dept</h2>
             <div class="ecamp_nav_icons">
+                <i class="head_icon_search fa fa-search" id="search_icon_js"></i>
                 <i class="head_icon_bars fa fa-bars" id="menu_icon_js"></i>
             </div>
+        </div>
+        <div class="search_container" id="search_container_js">
+            <i class="search_input_icon fa fa-search"></i>
+            <input class="search_container_input" placeholder="Search with song number.." id="search_input_js">
         </div>
         <div class="menu_container" id="menu_container_js">
             <a href="/vidhyardhi-geethavali/" class="menu_title">Home Page</a>
@@ -601,6 +647,9 @@
             </div>
         </div>
     <script>
+        const searchInput = document.getElementById('search_input_js');
+        const searchButton = document.getElementById('search_icon_js');
+        const searchContainer = document.getElementById('search_container_js');
         const menuButton = document.getElementById('menu_icon_js');
         const menuContainer = document.getElementById('menu_container_js');
         const campButton = document.getElementById('menu_camp_js');
@@ -612,6 +661,52 @@
         const aimsContainer = document.getElementById('menu_sub_aims_js');
         const audioContainer = document.getElementById('menu_sub_audio_js');
         const overlay = document.getElementById('overlay');
+
+        //Search Box Visibility
+        searchButton.addEventListener('click', function () {
+            const isSearchVisible = searchContainer.style.display === "block";
+
+            if (isSearchVisible) {
+                // Hide the search container and remove the box shadow
+                searchContainer.style.display = "none";
+                searchButton.classList.remove('fa-times');
+                searchButton.classList.add('fa-search');
+                searchContainer.style.boxShadow = 'none'; // Remove box shadow from the container
+                searchInput.removeEventListener('focus', addBoxShadow); // Remove focus event listener
+                searchInput.removeEventListener('blur', removeBoxShadow); // Remove blur event listener
+                searchInput.value = '';
+            } else {
+                // Show the search container
+                searchContainer.style.display = "block";
+                searchButton.classList.remove('fa-search');
+                searchButton.classList.add('fa-times');
+                // Add event listeners for focus and blur
+                searchInput.addEventListener('focus', addBoxShadow);
+                searchInput.addEventListener('blur', removeBoxShadow);
+            }
+        });
+
+        document.getElementById('search_input_js').addEventListener('input', function (e) {
+           const filter = e.target.value.toLowerCase();
+            const lists = [songsList, tracksList];
+
+            lists.forEach(list => {
+                Array.from(list.getElementsByTagName('li')).forEach(item => {
+                    const text = item.textContent || item.innerText;
+                    item.style.display = text.toLowerCase().indexOf(filter) > -1 ? "" : "none";
+                });
+            });
+        }); 
+
+        // Function to add box shadow to the search container when input is focused
+        function addBoxShadow() {
+            searchContainer.style.boxShadow = '0 0 2px 2px #197afe'; // Adjust shadow as needed
+        }
+
+        // Function to remove box shadow from the search container when input loses focus
+        function removeBoxShadow() {
+            searchContainer.style.boxShadow = 'none'; // Remove box shadow
+        }
        
         //Menu Box Visibility
         menuButton.addEventListener('click', function () {
