@@ -399,7 +399,9 @@
             <input class="search_container_input" placeholder="Search with song number.." id="search_input_js">
         </div>
         <div class="menu_container" id="menu_container_js">
-            <a href="/vidhyardhi-geethavali/" class="menu_title">Home Page</a>
+            <a href="/vidhyardhi-geethavali/" class="menu_title">E Camp Songs</a>
+            <a href="/vidhyardhi-geethavali/audios/telugu" class="menu_title">Audio Songs</a>
+            <!--
             <div class="menu_title" id="menu_camp_js">Camps Songs
                 <li class="sub_item" id="menu_sub_camp_js">
                     <div class="sub_items">
@@ -440,7 +442,7 @@
                         <a href="/vidhyardhi-geethavali/audios/new">New Songs</a>
                     </div>
                 </li>
-            </div>
+            </div>-->
         </div>
     </nav>
     <div>
@@ -586,6 +588,7 @@
             menuButton.classList.add('fa-bars');
         });
 
+/*
         //Camp Sub Item Visibility
         campButton.addEventListener('click', function () {
             campContainer.style.display = campContainer.style.display === "none" ? "block" : "none";
@@ -602,6 +605,7 @@
         audioButton.addEventListener('click', function () {
             audioContainer.style.display = audioContainer.style.display === "none" ? "block" : "none";
         });
+        */
         searchInput.addEventListener('input', function () {
             const query = searchInput.value.toLowerCase();
             const songLinks = document.querySelectorAll('.ecamp_a');
@@ -683,4 +687,4 @@
     </script>
 </body>
 
-</html>
+    </html>
