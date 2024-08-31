@@ -3,34 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My App</title>
-    <!-- Link to your manifest file -->
-    <link rel="manifest" href="/vidhyardhi-geethavali/manifest.json">
+    <title>Your PWA</title>
+    <link rel="manifest" href="/manifest.json">
     <style>
         /* Style for the install button */
         #install-button {
-            display: none; /* Hidden by default */
+            display: block; /* Hidden by default */
             position: fixed; /* Fixed positioning */
-            bottom: 20px; /* Space from the bottom */
-            right: 20px; /* Space from the right */
-            padding: 10px 20px;
-            background-color: #007bff; /* Background color */
-            color: white; /* Text color */
+            bottom: 20px; /* 20px from the bottom */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for centering */
+            padding: 10px 20px; /* Padding for the button */
+            background-color: #007bff; /* Button background color */
+            color: white; /* Button text color */
             border: none; /* No border */
             border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor on hover */
+            cursor: pointer; /* Pointer cursor */
             font-size: 16px; /* Font size */
-            z-index: 1000; /* Ensure the button is on top */
         }
-
         #install-button:hover {
-            background-color: #0056b3; /* Darker background on hover */
+            background-color: #0056b3; /* Darker shade on hover */
         }
     </style>
 </head>
 <body>
-  <h1>Hi this is your App Page</h1>
-    <!-- Add a button for the user to install the PWA -->
+    <!-- Content of your webpage -->
+<h2>This is my App</h2>
+    <!-- Install button -->
     <button id="install-button">Install App</button>
 
     <script>
@@ -42,16 +41,15 @@
             e.preventDefault();
             // Stash the event so it can be triggered later
             deferredPrompt = e;
-
             // Show the install button
-            const installButton = document.getElementById('install-button');
-            installButton.style.display = 'block';
+            document.getElementById('install-button').style.display = 'block';
+        });
 
-            // Add click event listener on the install button
-            installButton.addEventListener('click', () => {
-                // Show the install prompt
+        // Function to show the install prompt
+        document.getElementById('install-button').addEventListener('click', () => {
+            if (deferredPrompt) {
+                // Show the install prompt to the user
                 deferredPrompt.prompt();
-
                 // Wait for the user to respond to the prompt
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
@@ -59,20 +57,25 @@
                     } else {
                         console.log('User dismissed the install prompt');
                     }
-                    // Clear the deferredPrompt variable
                     deferredPrompt = null;
-                    // Hide the install button
-                    installButton.style.display = 'none';
+                    // Hide the install button after the prompt
+                    document.getElementById('install-button').style.display = 'none';
                 });
-            });
+            }
         });
 
-        // Handle the appinstalled event
-        window.addEventListener('appinstalled', (evt) => {
-            console.log('PWA was installed successfully');
-            // Optionally hide the install button
-            document.getElementById('install-button').style.display = 'none';
-        });
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/vidhyardhi-geethavali/service-worker.js')
+                    .then(function (registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function (error) {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
