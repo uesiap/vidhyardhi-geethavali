@@ -687,59 +687,7 @@
             });
         }
     </script>
-    <script>
-        let deferredPrompt;
-
-        // Function to show the install prompt
-        function showInstallPrompt() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the install prompt');
-                    } else {
-                        console.log('User dismissed the install prompt');
-                    }
-                    deferredPrompt = null;
-                });
-            } else {
-                console.log('Install prompt is not available.');
-            }
-        }
-
-        // Create and dispatch a fake beforeinstallprompt event
-        function triggerFakeInstallPrompt() {
-            const event = new Event('beforeinstallprompt', {
-                bubbles: true,
-                cancelable: true
-            });
-            window.dispatchEvent(event);
-
-            // Simulate the deferredPrompt event
-            deferredPrompt = {
-                prompt: () => { console.log('Fake prompt triggered'); },
-                userChoice: new Promise((resolve) => resolve({ outcome: 'accepted' }))
-            };
-
-            showInstallPrompt();
-        }
-
-        // Trigger the fake install prompt on page load
-        window.addEventListener('load', () => {
-            triggerFakeInstallPrompt();
-
-            // Service Worker registration
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/vidhyardhi-geethavali/service-worker.js')
-                    .then(function (registration) {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    })
-                    .catch(function (error) {
-                        console.log('ServiceWorker registration failed: ', error);
-                    });
-            }
-        });
-    </script>
+    
 </body>
 
     </html>
