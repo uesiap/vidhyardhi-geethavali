@@ -688,52 +688,20 @@
         }
     </script>
     <script>
-    let deferredPrompt;
-
-    // Listen for the beforeinstallprompt event
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent the mini-infobar from appearing on mobile
-        e.preventDefault();
-        // Stash the event so it can be triggered later
-        deferredPrompt = e;
-
-        // Optionally, show an install button to the user
-        showInstallPromotion();
-    });
-
-    // Function to show install promotion (you can call this function from a button click or automatically)
-    function showInstallPromotion() {
-        if (deferredPrompt) {
-            // Show the install prompt to the user
-            deferredPrompt.prompt();
-
-            // Wait for the user to respond to the prompt
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
-                deferredPrompt = null;
-            });
-        }
+    function showInstallPrompt() {
+        
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            
     }
-
-    // Automatically show the install prompt when the page loads
-    window.addEventListener('load', () => {
-        if (deferredPrompt) {
-            // Automatically show the install prompt when the page loads
-            showInstallPromotion();
-        }
-    });
-
-    // Listen for the appinstalled event
-    window.addEventListener('appinstalled', (evt) => {
-        // Log the installation to analytics or simply console log it
-        console.log('PWA was installed');
-        // You can also use this event to hide the install button or perform other actions
-        deferredPrompt = null;
-    });
+        showInstallPrompt();
     </script>
 </body>
 
