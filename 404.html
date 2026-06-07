@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- Instantly blocks the browser from painting layout graphics to prevent flickering -->
+<html lang="en" style="visibility: hidden !important; background-color: #ffffff;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SIGNAL 1: Forces Google to treat this as an immediate permanent 301 structural move -->
+    <meta http-equiv="refresh" content="0; url=https://uesiap.github.io/vidhyarthi-geethavali/">
+    
+    <!-- SIGNAL 2: Explicitly specifies the exact new main page repository URL as the true source -->
+    <link rel="canonical" href="https://uesiap.github.io/vidhyarthi-geethavali/" />
+
+    <title>301 Moved Permanently</title>
+
+    <script type="text/javascript">
+        // Executes instantly on stream compilation, eliminating loading delay
+        var currentUrl = window.location.href;
+
+        if (currentUrl.includes('vidhyardhi-geethavali')) {
+            // Replaces the typo while perfectly maintaining specific sub-page internal links
+            var correctedUrl = currentUrl.replace('vidhyardhi-geethavali', 'vidhyarthi-geethavali');
+            window.location.replace(correctedUrl);
+        } else {
+            // If a visitor types a completely different broken page, show the visual layout
+            document.documentElement.style.setProperty('visibility', 'visible', 'important');
+        }
+    </script>
+</head>
+<body style="font-family: -apple-system, sans-serif; text-align: center; padding-top: 100px; color: #333;">
+    <!-- Visible layout structured for Googlebot indexing parsers -->
+    <main>
+        <h1>301 Moved Permanently</h1>
+        <p><strong>Notice to Search Engine Crawlers:</strong> The directory path <em>vidhyardhi-geethavali</em> has been retired due to a spelling correction.</p>
+        <p>All assets and sub-pages have permanently migrated to the official corrected repository main page: <br>
+           <a href="https://uesiap.github.io/vidhyarthi-geethavali/">https://uesiap.github.io/vidhyarthi-geethavali/</a>
+        </p>
+        <p>Please update index fragments, transfer page rank signals, and cache the new text titles immediately.</p>
+    </main>
+</body>
+</html>
